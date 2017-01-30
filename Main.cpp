@@ -3,6 +3,11 @@
 
 using namespace std;
 
+void deleteAlternate();
+void deleteOdd();
+void deleteMax();
+void findValue();
+void reverseOrder();
 void removeByValue(int removedValue);
 void removeFirst();
 void removeLast();
@@ -18,14 +23,139 @@ int main(){
   addIncreasing(3);
   addIncreasing(7);
   addIncreasing(5);
+  addIncreasing(4);
+  addIncreasing(2);
   addIncreasing(9);
   printList(head);
-  removeLast();
-  printList(head);
-  removeByValue(3);
+  deleteAlternate();
   printList(head);
 }
 
+void deleteAlternate(){
+  Node* temp;
+  Node* follow;
+  temp = head;
+  head = head->getNext();
+  delete temp;
+  temp = head;
+  follow = head;
+  while(temp != NULL && follow->getNext() != NULL){
+    temp = temp->getNext();
+    follow->setNext(temp->getNext());
+    delete temp;
+    follow = follow->getNext();
+    temp = follow;
+
+
+  }
+
+
+
+
+
+}
+void deleteOdd(){
+  Node* temp;
+  Node* follow;
+  temp = head;
+  follow = head;
+  while(temp != NULL){
+    if (temp->getValue() % 2 == 1 && temp == head){
+      head = head->getNext();
+      follow = head;
+      delete temp;
+      temp = head;
+    }
+    else if (temp->getValue() % 2 == 1){
+      follow->setNext(temp->getNext());
+      delete temp;
+      temp = follow;
+    }
+    else {
+      follow = temp;
+      temp = temp->getNext();
+      
+    }
+  }
+
+
+
+}
+
+void deleteMax(){
+  Node* max;
+  Node* temp;
+  temp = head;
+  max = temp;
+  if (head == NULL){
+    return;
+  }
+  while(temp->getNext() != NULL){
+    if (max->getValue() < temp->getValue()){
+      max = temp;
+    }
+    temp = temp->getNext();
+  }
+  Node* prev;
+  prev = head;
+  if (prev == max){
+    head= head->getNext();
+    delete max;
+    return;
+  }
+  while(prev->getNext() != max){
+    prev = prev->getNext();
+  }
+  prev->setNext(max->getNext());
+  delete max;
+
+
+}
+
+void findValue(){
+  int max = 0;
+  int sum = 0;
+  int avg = 0;
+  int counter = 0;
+  Node* temp;
+  temp = head;
+  max = temp->getValue();
+  while(temp->getNext() != NULL){
+    if(temp->getNext()->getValue() > max){
+      max = temp->getValue();
+    }
+    temp = temp->getNext();
+  }
+  cout << "max: " << max;
+  temp = head;
+  while(temp != NULL){
+    sum = sum + temp->getValue();
+    temp = temp->getNext();
+    counter++;
+  }
+  avg = sum/counter;
+  cout << "avg: " << avg << endl;
+}
+void reverseOrder(){
+  if (head == NULL){
+    return;
+  }
+  Node* prev;
+  prev = NULL;
+  Node* current;
+  current = head;
+  Node* nextNode;
+  
+  while(current != NULL){
+    nextNode = current->getNext();
+    current->setNext(prev);
+    prev = current;
+    current = nextNode;
+
+  }
+  head = prev;
+
+}
 void removeByValue(int removedValue){
   Node* temp;
   Node* tempPrev;
