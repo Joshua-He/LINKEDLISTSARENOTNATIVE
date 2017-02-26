@@ -36,6 +36,8 @@ int main(){
   cin.getline(array, 101);
   length = strlen(array);
   cout << length << endl;
+
+  //Scan the entered string and process each individual token separated by space
   for(int i = 0; i < length; i++){
     if (array[i] == ' '){
       //cout << token << endl;
@@ -55,7 +57,12 @@ int main(){
 //Function to process the different token types 
 void processToken(Node* &stack, char* token){
   if (isOperator(token[0]) >0){
-    pop(stack, token[0]);
+
+    // When the token is not a ^
+    if (token[0] != '^') {
+       pop(stack, token[0]);
+    }
+    // Push the operator 
     push(stack, token[0]);
   }
   if (isOperand(token[0]) == true){
@@ -128,7 +135,7 @@ void push(Node* &head, char C){
 void pop(Node* &head, char op){
   Node* temp;
   temp = head;
-
+  
   while (temp != NULL && isOperator(temp->getValue()) >= isOperator(op)){
     cout << temp->getValue() << " ";
     head = temp->getNext();
