@@ -15,9 +15,5 @@ class Node{
  private:
   Node* next;
   char value[20];
-
-
-
-
 };
 #endif

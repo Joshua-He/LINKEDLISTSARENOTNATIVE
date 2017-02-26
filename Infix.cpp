@@ -11,6 +11,8 @@ using namespace std;
 
 Joshua He 
 
+Period 7 
+
 This program converts an Infix expression to postfix using a linked lsit stack and the shunting yard algorithm.
 
 

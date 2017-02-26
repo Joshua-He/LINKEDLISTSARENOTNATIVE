@@ -26,7 +26,7 @@ char Node::getValue(){
   return value[0];
 }
 
-// set next
+//set next
 
 void Node::setNext(Node* newNext){
   next = newNext;
