@@ -1,20 +1,23 @@
+#include <iostream>
 #ifndef NODE_H
 #define NODE_H
-#include <iostream>
 
-using namespace std;
+//Class Definition for Node class
 
 class Node{
  public:
   Node();
   ~Node();
-  void setValue(int newvalue);
-  int getValue();
-  void setNext(Node* newnext);
   Node* getNext();
+  void setNext(Node* newNext);
+  void setValue(char C);
+  char getValue();
  private:
-  int value;
   Node* next;
+  char value[20];
+
+
+
 
 };
 #endif
