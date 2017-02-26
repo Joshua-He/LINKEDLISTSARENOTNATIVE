@@ -6,6 +6,15 @@
 
 using namespace std;
 
+
+/*
+
+Joshua He 
+
+This program converts an Infix expression to postfix using a linked lsit stack and the shunting yard algorithm.
+
+
+ */
 void push(Node* &head, char C);
 void pop(Node* &head, char C);
 void processToken(Node* &stack, char* token);
@@ -23,7 +32,7 @@ int main(){
   Node* stack = NULL;
   
   cout << "Enter Infix expression. Please enter with space separating each operator and operand" << endl;
-  cout << "For example: 3 + (2 * 5) + 3" << endl;
+  cout << "For example: 3 + ( 2 * 5 ) + 3" << endl;
   cin.getline(array, 101);
   length = strlen(array);
   cout << length << endl;
