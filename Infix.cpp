@@ -33,11 +33,11 @@ int main(){
   int length;
   Node* stack = NULL;
   
-  cout << "Enter Infix expression. Please enter with space separating each operator and operand" << endl;
+  cout << "Enter an Infix expression. Please enter with a space separating each operator and operand" << endl;
   cout << "For example: 3 + ( 2 * 5 ) + 3" << endl;
   cin.getline(array, 101);
   length = strlen(array);
-  cout << length << endl;
+  cout << "The postfix is: " << endl;
 
   //Scan the entered string and process each individual token separated by space
   for(int i = 0; i < length; i++){
